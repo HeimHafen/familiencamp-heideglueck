@@ -672,6 +672,38 @@
       flex-wrap: wrap;
       gap: var(--space-m);
     }
+
+    /* ===== Optische Abgrenzung zu HeimHafen Web (nur für Familiencamp) ===== */
+
+    /* Hero-Bereich: mehr „Natur“-Stimmung durch Verlauf */
+    .hero {
+      padding: var(--space-xxl) 0 var(--space-xl);
+      background: radial-gradient(circle at top left, #fefae0 0, #e2f1ea 40%, #f5f5f7 85%);
+    }
+
+    /* Buttons: weicher, mit stärkerem Schatten und grünem Verlauf */
+    .btn--primary {
+      background: linear-gradient(135deg, #2d7d5b, #246b4d);
+      box-shadow: 0 14px 30px rgba(36, 107, 77, 0.35);
+    }
+
+    .btn--ghost {
+      border-radius: 999px;
+      border: 1px solid rgba(36, 107, 77, 0.2);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Karten: stärker abgerundet und mit grünem Akzent oben */
+    .card {
+      border-radius: 16px;
+      border-top: 3px solid rgba(36, 107, 77, 0.9);
+    }
+
+    /* Überschriften und markierter Teil der Hero-Headline noch „grüner“ */
+    .section__title,
+    .hero__title span {
+      color: #246b4d;
+    }
   </style>
 </head>
 <body>
