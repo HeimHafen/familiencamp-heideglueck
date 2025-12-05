@@ -120,40 +120,16 @@
       gap: var(--space-s);
     }
 
-    .brand__mark {
-      width: 34px;
-      height: 34px;
+    /* Logo-Bild */
+    .brand__logo {
+      width: 40px;
+      height: 40px;
       border-radius: 999px;
-      background: radial-gradient(circle at 20% 10%, #ecfeff 0, transparent 55%),
-        linear-gradient(145deg, #22c55e, #15803d);
+      object-fit: contain;
+      background: #ffffff;
       border: 2px solid #ffffff;
       box-shadow: 0 5px 14px rgba(0, 0, 0, 0.16);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Zelt im Kreis */
-    .brand__mark::before {
-      content: "";
-      position: absolute;
-      bottom: 7px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-left: 9px solid transparent;
-      border-right: 9px solid transparent;
-      border-bottom: 15px solid #14532d;
-    }
-
-    .brand__mark::after {
-      content: "";
-      position: absolute;
-      bottom: 7px;
-      left: 50%;
-      width: 3px;
-      height: 10px;
-      transform: translateX(-50%);
-      background: #0f172a;
-      border-radius: 999px;
+      flex-shrink: 0;
     }
 
     .brand__text {
@@ -633,7 +609,12 @@
     <header class="site-header">
       <div class="container site-header__inner">
         <div class="brand">
-          <div class="brand__mark" aria-hidden="true"></div>
+          <!-- Logo-Datei muss im gleichen Ordner liegen wie diese index.html -->
+          <img
+            src="familiencamp-heideglueck-logo.png"
+            alt="Logo Familiencamp Heideglück"
+            class="brand__logo"
+          />
           <div class="brand__text">
             <span class="brand__name">Familiencamp Heideglück</span>
             <span class="brand__tagline">Ruhiger Familien-Campingplatz im Grünen</span>
@@ -850,7 +831,12 @@
               </div>
               <div class="form-group">
                 <label class="form-label" for="dates">Reisezeitraum (Beispiel)</label>
-                <input class="form-input" type="text" id="dates" placeholder="z. B. 12.–18. Juli, 2 Erwachsene, 2 Kinder" />
+                <input
+                  class="form-input"
+                  type="text"
+                  id="dates"
+                  placeholder="z. B. 12.–18. Juli, 2 Erwachsene, 2 Kinder"
+                />
               </div>
               <div class="form-group">
                 <label class="form-label" for="message">Fragen oder Wünsche</label>
