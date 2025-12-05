@@ -132,6 +132,13 @@
       flex-shrink: 0;
     }
 
+    @media (min-width: 768px) {
+      .brand__logo {
+        width: 48px;
+        height: 48px;
+      }
+    }
+
     .brand__text {
       display: flex;
       flex-direction: column;
@@ -233,7 +240,7 @@
     /* Hero */
 
     .hero {
-      padding: var(--space-xxl) 0 var(--space-xl);
+      padding: var(--space-xl) 0 var(--space-xl);
     }
 
     .hero__grid {
@@ -609,9 +616,9 @@
     <header class="site-header">
       <div class="container site-header__inner">
         <div class="brand">
-          <!-- Logo-Datei muss im gleichen Ordner liegen wie diese index.html -->
+          <!-- Wichtig: Dateiname logo.png -->
           <img
-            src="familiencamp-heideglueck-logo.png"
+            src="logo.png"
             alt="Logo Familiencamp Heideglück"
             class="brand__logo"
           />
@@ -854,9 +861,7 @@
             </form>
 
             <div class="contact__meta">
-              <p>
-                In einem realen Projekt würden hier außerdem stehen:
-              </p>
+              <p>In einem realen Projekt würden hier außerdem stehen:</p>
               <ul class="list-check">
                 <li>Adresse des Campingplatzes</li>
                 <li>Anreise mit Auto, Bahn & Fahrrad</li>
