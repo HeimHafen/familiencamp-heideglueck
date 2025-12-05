@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Familiencamp Heideglück – Familienfreundlicher Campingplatz im Grünen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Familienfreundlicher, ruhiger Campingplatz im Grünen. Stellplätze, Familien-Lodges, Spielbereich und viele Ausflugsmöglichkeiten in der Umgebung."
+  />
+
+  <style>
+    :root {
+      --color-bg: #f5f5f7;
+      --color-surface: #ffffff;
+      --color-primary: #246b4d;
+      --color-primary-soft: #e2f1ea;
+      --color-accent: #f4a259;
+      --color-text: #151618;
+      --color-text-soft: #4b4f5c;
+      --color-border: #dde0e7;
+
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+      --radius-s: 6px;
+      --radius-m: 12px;
+
+      --shadow-soft: 0 14px 40px rgba(0, 0, 0, 0.08);
+
+      --space-xs: 0.35rem;
+      --space-s: 0.7rem;
+      --space-m: 1.1rem;
+      --space-l: 1.8rem;
+      --space-xl: 2.6rem;
+      --space-xxl: 3.6rem;
+
+      --content-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-sans);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 var(--space-m);
+    }
+
+    /* Header */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(245, 245, 247, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(221, 224, 231, 0.7);
+    }
+
+    .site-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-s) 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-s);
+    }
+
+    .brand__mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #fefae0, #52b788, #315f47);
+      border: 2px solid #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .brand__text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+    }
+
+    .brand__name {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    .brand__tagline {
+      font-size: 0.75rem;
+      color: var(--color-text-soft);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-l);
+    }
+
+    .nav__list {
+      display: flex;
+      list-style: none;
+      gap: var(--space-m);
+      margin: 0;
+      padding: 0;
+      font-size: 0.95rem;
+    }
+
+    .nav__link {
+      padding: var(--space-xs) 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav__link:hover,
+    .nav__link--active {
+      border-bottom-color: var(--color-primary);
+    }
+
+    .nav__cta {
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: var(--color-primary);
+      color: #ffffff;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+    }
+
+    .nav__cta:hover {
+      filter: brightness(1.05);
+    }
+
+    .nav__toggle {
+      display: none;
+      border: none;
+      background: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav__list,
+      .nav__cta {
+        display: none;
+      }
+
+      .nav--open .nav__list,
+      .nav--open .nav__cta {
+        display: flex;
+      }
+
+      .nav--open .nav__list {
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        padding: var(--space-m);
+        background: var(--color-bg);
+        border-bottom: 1px solid var(--color-border);
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav--open .nav__cta {
+        margin: 0 var(--space-m) var(--space-m);
+      }
+
+      .nav__toggle {
+        display: inline-flex;
+      }
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: var(--space-xxl) 0 var(--space-xl);
+    }
+
+    .hero__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero__eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--color-text-soft);
+      margin-bottom: var(--space-xs);
+    }
+
+    .hero__title {
+      font-size: clamp(2.1rem, 3vw, 2.7rem);
+      line-height: 1.15;
+      margin: 0 0 var(--space-m);
+    }
+
+    .hero__title span {
+      color: var(--color-primary);
+    }
+
+    .hero__text {
+      font-size: 1.02rem;
+      color: var(--color-text-soft);
+      margin-bottom: var(--space-l);
+      max-width: 38rem;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-s);
+      margin-bottom: var(--space-m);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      border-radius: 999px;
+      padding: 0.75rem 1.4rem;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn--primary {
+      background: var(--color-primary);
+      color: #ffffff;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn--primary:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      border: 1px solid var(--color-border);
+      color: var(--color-text-soft);
+    }
+
+    .btn--ghost:hover {
+      background: #ffffff;
+    }
+
+    .hero__meta {
+      font-size: 0.86rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-s);
+      color: var(--color-text-soft);
+    }
+
+    .hero__meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .hero__meta-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--color-accent);
+    }
+
+    .hero__card {
+      background: var(--color-surface);
+      border-radius: var(--radius-m);
+      padding: var(--space-l);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(221, 224, 231, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero__badge {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: var(--color-primary-soft);
+      color: var(--color-primary);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero__card-title {
+      font-size: 0.9rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--color-text-soft);
+      margin-bottom: var(--space-s);
+    }
+
+    .hero__card-highlight {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: var(--space-s);
+    }
+
+    .hero__card-list {
+      list-style: none;
+      margin: 0 0 var(--space-m);
+      padding: 0;
+      font-size: 0.9rem;
+      color: var(--color-text-soft);
+    }
+
+    .hero__card-list li {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero__card-list li::before {
+      content: "✓";
+      color: var(--color-primary);
+    }
+
+    .hero__card-note {
+      font-size: 0.8rem;
+      color: var(--color-text-soft);
+      border-top: 1px dashed var(--color-border);
+      padding-top: var(--space-s);
+    }
+
+    /* Sections allgemein */
+
+    .section {
+      padding: var(--space-xl) 0;
+    }
+
+    .section--alt {
+      background: #ffffff;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .section__header {
+      margin-bottom: var(--space-l);
+      max-width: 40rem;
+    }
+
+    .section__eyebrow {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 600;
+      color: var(--color-text-soft);
+      margin-bottom: var(--space-xs);
+    }
+
+    .section__title {
+      font-size: 1.6rem;
+      margin: 0 0 var(--space-s);
+    }
+
+    .section__intro {
+      font-size: 0.96rem;
+      color: var(--color-text-soft);
+    }
+
+    /* Plätze & Unterkünfte */
+
+    .spots__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-m);
+    }
+
+    @media (max-width: 1000px) {
+      .spots__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .spots__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--color-surface);
+      border-radius: var(--radius-m);
+      padding: var(--space-m);
+      border: 1px solid rgba(221, 224, 231, 0.9);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-s);
+    }
+
+    .card__label {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-soft);
+      font-weight: 600;
+    }
+
+    .card__title {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    .card__meta {
+      font-size: 0.85rem;
+      color: var(--color-text-soft);
+    }
+
+    .card__text {
+      font-size: 0.9rem;
+      color: var(--color-text-soft);
+      flex: 1;
+    }
+
+    .card__tagline {
+      font-size: 0.85rem;
+      color: var(--color-primary);
+      font-weight: 500;
+    }
+
+    /* Erlebnisse */
+
+    .things__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: var(--space-l);
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .things__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .things__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-m);
+    }
+
+    .things__item-title {
+      margin: 0 0 0.15rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .things__item-text {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--color-text-soft);
+    }
+
+    .things__box {
+      background: var(--color-primary-soft);
+      border-radius: var(--radius-m);
+      padding: var(--space-m);
+      border: 1px solid rgba(221, 224, 231, 0.9);
+      font-size: 0.9rem;
+      color: var(--color-text-soft);
+    }
+
+    /* Infos & FAQ */
+
+    .info__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: var(--space-l);
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .info__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .info__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.9rem;
+      color: var(--color-text-soft);
+      display: grid;
+      gap: var(--space-s);
+    }
+
+    .info__item strong {
+      display: inline-block;
+      min-width: 7rem;
+    }
+
+    .faq {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-s);
+      font-size: 0.9rem;
+      color: var(--color-text-soft);
+    }
+
+    .faq__q {
+      font-weight: 600;
+    }
+
+    .faq__a {
+      margin: 0.1rem 0 0;
+    }
+
+    /* Kontakt */
+
+    .contact__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: var(--space-l);
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .contact__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-form {
+      background: var(--color-surface);
+      border-radius: var(--radius-m);
+      padding: var(--space-m);
+      border: 1px solid rgba(221, 224, 231, 0.9);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .form-group {
+      margin-bottom: var(--space-m);
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--color-border);
+      padding: 0.6rem 0.8rem;
+      font-size: 0.9rem;
+      font-family: var(--font-sans);
+      background: #ffffff;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: 2px solid var(--color-primary-soft);
+      border-color: var(--color-primary);
+    }
+
+    .form-textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .contact__note {
+      font-size: 0.85rem;
+      color: var(--color-text-soft);
+      margin-top: var(--space-s);
+    }
+
+    .contact__meta {
+      font-size: 0.9rem;
+      color: var(--color-text-soft);
+    }
+
+    .contact__meta strong {
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    /* Footer */
+
+    .site-footer {
+      border-top: 1px solid var(--color-border);
+      margin-top: var(--space-xl);
+      padding: var(--space-m) 0;
+    }
+
+    .site-footer__inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-s);
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--color-text-soft);
+    }
+
+    .site-footer__note {
+      font-size: 0.78rem;
+      color: var(--color-text-soft);
+    }
+
+    .site-footer__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-m);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <div class="brand">
+          <div class="brand__mark" aria-hidden="true"></div>
+          <div class="brand__text">
+            <div class="brand__name">Familiencamp Heideglück</div>
+            <div class="brand__tagline">Ruhiger Familien-Campingplatz im Grünen</div>
+          </div>
+        </div>
+        <nav class="nav" id="main-nav">
+          <button class="nav__toggle" aria-label="Navigation umschalten" onclick="toggleNav()">
+            ☰
+          </button>
+          <ul class="nav__list">
+            <li><a href="#plaetze" class="nav__link">Stellplätze & Lodges</a></li>
+            <li><a href="#erlebnisse" class="nav__link">Erlebnisse</a></li>
+            <li><a href="#infos" class="nav__link">Infos & FAQ</a></li>
+            <li><a href="#kontakt" class="nav__link">Kontakt</a></li>
+          </ul>
+          <button class="nav__cta" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">
+            Aufenthalt anfragen
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero" id="start">
+        <div class="container hero__grid">
+          <div>
+            <div class="hero__eyebrow">Familienfreundlicher Campingplatz</div>
+            <h1 class="hero__title">
+              Camping mit Kindern – <span>ruhig, übersichtlich und nah an der Natur.</span>
+            </h1>
+            <p class="hero__text">
+              Das Familiencamp Heideglück ist ein kleiner, familienfreundlicher Campingplatz im Grünen.
+              Überschaubare Wege, viel Platz zum Spielen und klare Infos – damit schon die Planung entspannt
+              beginnt und Sie vor Ort mehr Zeit für das Wichtige haben: gemeinsame Erlebnisse.
+            </p>
+            <div class="hero__actions">
+              <a href="#kontakt" class="btn btn--primary">Unverbindlich anfragen</a>
+              <a href="#plaetze" class="btn btn--ghost">Plätze & Lodges ansehen</a>
+            </div>
+            <div class="hero__meta">
+              <span class="hero__meta-item">
+                <span class="hero__meta-dot"></span> Autofreie Spielbereiche
+              </span>
+              <span class="hero__meta-item">
+                <span class="hero__meta-dot"></span> Familienbäder & Wickelraum
+              </span>
+              <span class="hero__meta-item">
+                <span class="hero__meta-dot"></span> Ausflüge ohne lange Anfahrt
+              </span>
+            </div>
+          </div>
+
+          <aside class="hero__card">
+            <div class="hero__badge">Demo-Projekt</div>
+            <div class="hero__card-title">Auf einen Blick</div>
+            <div class="hero__card-highlight">
+              Überschaubarer Platz mit Fokus auf Familien: kurze Wege, viel Grün, ruhige Abende
+              und genug Platz für Kinder, um einfach Kind zu sein.
+            </div>
+            <ul class="hero__card-list">
+              <li>Parzellierte Stellplätze mit Stromanschluss</li>
+              <li>Familien-Lodges für alle, die kein Zelt besitzen</li>
+              <li>Großer Spiel- & Kletterbereich in Sichtweite der Plätze</li>
+              <li>Badhaus mit Familienbädern und Wickelmöglichkeiten</li>
+            </ul>
+            <div class="hero__card-note">
+              Hinweis: Dies ist eine fiktive Beispiel-Website („Demo“) für einen Campingplatz, erstellt als
+              Showcase für Webdesign & Struktur. Alle Angaben sind beispielhaft.
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Stellplätze & Unterkünfte -->
+      <section class="section section--alt" id="plaetze">
+        <div class="container">
+          <header class="section__header">
+            <div class="section__eyebrow">Stellplätze & Lodges</div>
+            <h2 class="section__title">Übernachten im Familiencamp Heideglück</h2>
+            <p class="section__intro">
+              Ob mit Zelt, Wohnwagen oder ganz ohne eigene Ausrüstung – bei uns finden Familien den passenden Platz.
+              Alle Bereiche sind so angelegt, dass Kinder Raum zum Spielen haben und Eltern trotzdem den Überblick behalten.
+            </p>
+          </header>
+
+          <div class="spots__grid">
+            <article class="card">
+              <div class="card__label">Stellplätze</div>
+              <h3 class="card__title">Wiesencamping „Heideblick“</h3>
+              <p class="card__meta">
+                Sonnige und halbschattige Stellplätze nahe des Hauptspielplatzes, ideal für Familien mit kleineren Kindern.
+              </p>
+              <p class="card__text">
+                Parzellierte Stellplätze mit Stromanschluss, kurze Wege zu Sanitär und Spielbereich. Bereiche ohne
+                Durchgangsverkehr, damit Kinder gefahrlos zwischen Platz und Spielwiese wechseln können.
+              </p>
+              <div class="card__tagline">Ruhige Abendstunden dank klarer Ruhezeiten.</div>
+            </article>
+
+            <article class="card">
+              <div class="card__label">Stellplätze</div>
+              <h3 class="card__title">Waldrandplätze „Kiefernruh“</h3>
+              <p class="card__meta">
+                Etwas zurückgezogen am Rand des kleinen Waldstücks – mehr Schatten, mehr Ruhe, viel Natur.
+              </p>
+              <p class="card__text">
+                Für Familien, die es gerne etwas ruhiger mögen. Von hier aus starten Wander- und Radwege in die Umgebung.
+                Die wichtigsten Angebote auf dem Platz sind dennoch in wenigen Minuten erreichbar.
+              </p>
+              <div class="card__tagline">Perfekt für längere Aufenthalte und Ferienzeiten.</div>
+            </article>
+
+            <article class="card">
+              <div class="card__label">Mietunterkunft</div>
+              <h3 class="card__title">Familien-Lodge „Heidehütte“</h3>
+              <p class="card__meta">
+                Für alle, die ohne eigene Ausrüstung anreisen möchten: gemütliche Lodges mit Platz für die ganze Familie.
+              </p>
+              <p class="card__text">
+                Feste Betten, kleine Küchenzeile, eigene Terrasse – und doch mittendrin im Campingplatzleben. Ideal für
+                Großeltern mit Enkeln, Einsteiger oder Familien, die Camping ausprobieren möchten, ohne alles mitzubringen.
+              </p>
+              <div class="card__tagline">Ankommen, auspacken, loscampen – ohne großen Aufbau.</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Erlebnisse -->
+      <section class="section" id="erlebnisse">
+        <div class="container">
+          <header class="section__header">
+            <div class="section__eyebrow">Erlebnisse</div>
+            <h2 class="section__title">Was Familien bei uns entdecken können</h2>
+            <p class="section__intro">
+              Der Platz ist bewusst überschaubar gehalten – aber rundherum gibt es viel zu entdecken. Vom
+              Barfußpfad direkt neben dem Platz bis zum Badesee wenige Fahrminuten entfernt.
+            </p>
+          </header>
+
+          <div class="things__grid">
+            <ul class="things__list">
+              <li>
+                <h3 class="things__item-title">Spiel- & Kletterbereich mitten im Platz</h3>
+                <p class="things__item-text">
+                  Großer Spielplatz mit Kletterturm, Rutsche, Sandbereich und kleinem Matschbereich für die
+                  ganz Kleinen. So angelegt, dass viele Plätze Sichtkontakt zum Spielbereich haben.
+                </p>
+              </li>
+              <li>
+                <h3 class="things__item-title">Abendliches Lagerfeuer & Stockbrot</h3>
+                <p class="things__item-text">
+                  An ausgewählten Abenden im Sommer: gemeinsames Lagerfeuer mit Stockbrot. Einfache,
+                  ruhige Angebote statt Dauerbespaßung – aber mit viel Raum für Begegnung.
+                </p>
+              </li>
+              <li>
+                <h3 class="things__item-title">Badesee & Ausflüge in der Umgebung</h3>
+                <p class="things__item-text">
+                  Ein Badesee mit flachem Ufer, kleine Tierparks, familienfreundliche Wanderwege und
+                  Radwege, die direkt am Platz vorbeiführen – vieles ist in wenigen Minuten erreichbar.
+                </p>
+              </li>
+            </ul>
+
+            <aside class="things__box">
+              <strong>Beispielhafter Tagesablauf:</strong>
+              <p>
+                Vormittags eine kleine Runde zum See, mittags zurück zum Platz, nachmittags Spielplatz
+                und ruhiger Kaffee an der Lodge – abends gemeinsames Grillen und frühe Ruhezeiten.
+              </p>
+              <p>
+                Die Struktur der Website ist darauf ausgelegt, dass Familien schon bei der Planung sehen,
+                wie ein Tag aussehen könnte – ohne lange suchen zu müssen.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- Infos & FAQ -->
+      <section class="section section--alt" id="infos">
+        <div class="container">
+          <header class="section__header">
+            <div class="section__eyebrow">Infos & FAQ</div>
+            <h2 class="section__title">Das Wichtigste vorab auf einen Blick</h2>
+            <p class="section__intro">
+              Aus der Erfahrung mit Familien wissen wir: Je klarer die Infos vorab, desto entspannter die Anreise.
+              Die folgenden Punkte sind typische Fragen, die Familien vor der Buchung haben.
+            </p>
+          </header>
+
+          <div class="info__grid">
+            <div>
+              <ul class="info__list">
+                <li><strong>Saison:</strong> Beispielhaft: April – Oktober</li>
+                <li><strong>Anreise:</strong> Ruhige Anreisezeiten, Check-in z. B. von 14–19 Uhr</li>
+                <li><strong>Ruhezeiten:</strong> z. B. 22–7 Uhr, damit alle gut schlafen können</li>
+                <li><strong>Hunde:</strong> In ausgewählten Bereichen nach Absprache erlaubt</li>
+                <li><strong>Sanitär:</strong> Familienbäder, Wickelraum, Kinderwaschbecken</li>
+                <li><strong>Brötchenservice:</strong> Vorbestellung am Vortag möglich</li>
+              </ul>
+            </div>
+
+            <div>
+              <ul class="faq">
+                <li>
+                  <div class="faq__q">Wie familienfreundlich ist der Platz wirklich?</div>
+                  <p class="faq__a">
+                    Die Stellplätze, Spielbereiche und Wege sind so geplant, dass Kinder sichtbar bleiben und Wege kurz sind.
+                    Es gibt keine großen Durchfahrtsstraßen mitten durch den Platz.
+                  </p>
+                </li>
+                <li>
+                  <div class="faq__q">Gibt es auch ruhigere Bereiche?</div>
+                  <p class="faq__a">
+                    Ja. Neben den zentral gelegenen Familienbereichen gibt es Waldrandplätze mit mehr Abstand –
+                    ideal für Ruhebedürftige oder längere Aufenthalte.
+                  </p>
+                </li>
+                <li>
+                  <div class="faq__q">Ist die Website auf dem Smartphone gut nutzbar?</div>
+                  <p class="faq__a">
+                    Ja – alle Inhalte dieser Demo-Seite sind mobil optimiert. Sie zeigt, wie Familien unterwegs
+                    schnell das finden, was sie gerade brauchen.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kontakt -->
+      <section class="section" id="kontakt">
+        <div class="container">
+          <header class="section__header">
+            <div class="section__eyebrow">Kontakt</div>
+            <h2 class="section__title">Aufenthalt im Familiencamp Heideglück anfragen</h2>
+            <p class="section__intro">
+              Dieses Projekt zeigt, wie eine klare Kontaktsektion für einen Campingplatz aussehen kann. In einer
+              echten Umsetzung würden Anfragen direkt in Ihrem Postfach landen – hier dient das Formular als Beispiel.
+            </p>
+          </header>
+
+          <div class="contact__grid">
+            <form class="contact-form">
+              <div class="form-group">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-input" type="text" id="name" name="name" placeholder="Ihr Name" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">E-Mail</label>
+                <input class="form-input" type="email" id="email" name="email" placeholder="name@beispiel.de" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="dates">Geplanter Zeitraum</label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="dates"
+                  name="dates"
+                  placeholder="z. B. 1.–7. August, 2 Erwachsene, 2 Kinder"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="message">Anliegen oder Fragen</label>
+                <textarea
+                  class="form-textarea"
+                  id="message"
+                  name="message"
+                  placeholder="Kurze Beschreibung Ihres Aufenthaltswunsches oder Fragen."
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn--primary">Anfrage senden (Demo)</button>
+              <p class="contact__note">
+                Hinweis: Dieses Formular ist in dieser Demo nicht angebunden. In einem realen Projekt würde es
+                direkt mit Ihrem E-Mail-Postfach oder einem Buchungssystem verbunden.
+              </p>
+            </form>
+
+            <div class="contact__meta">
+              <p>
+                <strong>Beispielhafte Kontaktdaten</strong>
+                Familiencamp Heideglück<br />
+                Heideweg 1<br />
+                12345 Heideort
+              </p>
+              <p>
+                Telefon: 01234&nbsp;/&nbsp;56789<br />
+                E-Mail: <a href="mailto:info@familiencamp-heideglueck.de">info@familiencamp-heideglueck.de</a>
+              </p>
+              <p>
+                In einer echten Umsetzung würden hier außerdem Anreisehinweise, Kartenlinks und Informationen zur
+                Buchung stehen.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div>© <span id="year"></span> Familiencamp Heideglück (Demo)</div>
+        <div class="site-footer__links">
+          <span class="site-footer__note">
+            Demo-Website, erstellt als Beispielprojekt von HeimHafen Web. Alle Inhalte sind fiktiv.
+          </span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function toggleNav() {
+      const nav = document.getElementById("main-nav");
+      nav.classList.toggle("nav--open");
+    }
+  </script>
+</body>
+</html>
