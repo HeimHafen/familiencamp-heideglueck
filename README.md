@@ -1,6 +1,6 @@
 ---
 
-## 2) `familiencamp-heideglueck` → `README.md`
+### 2) `familiencamp-heideglueck` → `README.md`
 
 ```md
 # Familiencamp Heideglück (Demo)
