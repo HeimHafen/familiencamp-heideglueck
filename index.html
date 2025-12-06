@@ -101,7 +101,7 @@
       border: 0;
     }
 
-    /* ========== Header im „Azur“-Stil (Burger + Logo in einer Reihe) ========== */
+    /* ========== Header: Burger + breites Logo wie bei Azur ========== */
 
     .site-header {
       position: sticky;
@@ -115,7 +115,7 @@
     .site-header__bar {
       max-width: var(--content-width);
       margin: 0 auto;
-      padding: 0.35rem var(--space-m);
+      padding: 0.4rem var(--space-m);
       display: flex;
       align-items: center;
       gap: var(--space-m);
@@ -148,26 +148,64 @@
     .site-brand {
       display: flex;
       align-items: center;
+      gap: 0.6rem;
       flex: 1;
       justify-content: flex-start;
+      min-width: 0;
     }
 
-    .site-brand__img {
-      max-height: 46px;
-      width: auto;
-      height: auto;
+    .site-brand__icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #e2f0e7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
 
-    @media (min-width: 480px) {
-      .site-brand__img {
-        max-height: 54px;
+    .site-brand__icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .site-brand__text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      overflow: hidden;
+    }
+
+    .site-brand__title {
+      font-weight: 600;
+      font-size: 0.98rem;
+      color: var(--color-text);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .site-brand__subtitle {
+      font-size: 0.78rem;
+      color: var(--color-text-soft);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    @media (max-width: 360px) {
+      .site-brand__subtitle {
+        display: none;
       }
     }
 
     /* Navigation direkt unter dem Header-Balken */
 
     .site-nav {
-      margin-top: 0.1rem;
+      margin-top: 0.05rem;
       padding: 0.25rem var(--space-m) 0.4rem;
       display: flex;
       align-items: center;
@@ -777,12 +815,16 @@
           onclick="toggleNav()"
         ></button>
 
+        <!-- Breiter Logo-Block: Icon + Text, wie bei Azur -->
         <a href="#start" class="site-brand" aria-label="Familiencamp Heideglück – familienfreundlicher Campingplatz">
-          <img
-            src="familiencamp-logo.png"
-            alt="Familiencamp Heideglück – familienfreundlicher Campingplatz"
-            class="site-brand__img"
-          />
+          <div class="site-brand__icon">
+            <!-- hier dein grünes Logo – Dateiname ggf. anpassen -->
+            <img src="familiencamp-logo.png" alt="" />
+          </div>
+          <div class="site-brand__text">
+            <div class="site-brand__title">Familiencamp Heideglück</div>
+            <div class="site-brand__subtitle">Ruhiger Familien-Campingplatz im Grünen</div>
+          </div>
         </a>
       </div>
 
