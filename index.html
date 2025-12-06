@@ -101,14 +101,14 @@
       border: 0;
     }
 
-    /* ========== Header ========== */
+    /* ========== Header & Banner ========== */
 
     .site-header {
       position: sticky;
       top: 0;
       z-index: 100;
       padding-top: max(1rem, env(safe-area-inset-top));
-      padding-bottom: 1rem;
+      padding-bottom: 0.75rem;
       background: rgba(243, 246, 242, 0.96);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(214, 224, 211, 0.7);
@@ -120,40 +120,70 @@
     }
 
     .site-header__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
+      position: relative;
     }
 
-    /* großer Logo-Pill wie von dir gewünscht */
+    /* Logo-Banner über volle Container-Breite */
     .site-brand {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0.35rem 0.6rem;
+      width: 100%;
+      padding: 0.45rem 1rem;
       border-radius: 999px;
       background: var(--color-surface);
       box-shadow: 0 10px 30px rgba(8, 32, 18, 0.15);
-      max-width: 100%;
     }
 
     .site-brand__img {
       display: block;
-      max-height: 52px; /* Höhe des Logos im Pill */
+      max-height: 56px;
       height: auto;
       width: auto;
     }
 
     @media (max-width: 480px) {
       .site-brand__img {
-        max-height: 46px;
+        max-height: 50px;
       }
     }
 
+    /* Burger, der rechts über dem Banner schwebt */
+    .site-nav__toggle {
+      position: absolute;
+      right: 0.4rem;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .site-nav__toggle::before {
+      content: "☰";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: #ffffff;
+      box-shadow: 0 10px 26px rgba(8, 32, 18, 0.18);
+      font-size: 1.1rem;
+      color: var(--color-text-soft);
+    }
+
+    /* Navigation unter dem Banner */
+
     .site-nav {
+      margin-top: 0.7rem;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: var(--space-l);
       position: relative;
     }
@@ -195,38 +225,12 @@
       filter: brightness(1.05);
     }
 
-    .site-nav__toggle {
-      display: none;
-      border: none;
-      padding: 0;
-      background: transparent;
-      cursor: pointer;
-    }
-
-    .site-nav__toggle::before {
-      content: "☰";
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      background: #ffffff;
-      box-shadow: 0 10px 26px rgba(8, 32, 18, 0.18);
-      font-size: 1.1rem;
-      color: var(--color-text-soft);
-    }
+    /* Mobile: Liste & CTA standardmäßig verstecken, bei geöffnetem Menü zeigen */
 
     @media (max-width: 768px) {
       .site-nav__list,
       .site-nav__cta {
         display: none;
-      }
-
-      .site-nav__toggle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
       }
 
       .site-nav--open .site-nav__list,
@@ -239,15 +243,37 @@
         align-items: flex-start;
         background: var(--color-bg);
         position: absolute;
-        top: 54px;
-        right: -2.1rem;
+        top: 0;
         left: -2.1rem;
+        right: -2.1rem;
         padding: var(--space-m) 2.1rem var(--space-m);
-        border-bottom: 1px solid var(--color-border);
+        border-radius: var(--radius-m);
+        border: 1px solid var(--color-border);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
       }
 
       .site-nav--open .site-nav__cta {
-        margin: var(--space-s) 2.1rem var(--space-s);
+        margin-top: var(--space-s);
+      }
+    }
+
+    /* Desktop: Menü immer sichtbar, Burger ausblenden */
+
+    @media (min-width: 769px) {
+      .site-nav {
+        justify-content: space-between;
+      }
+
+      .site-nav__toggle {
+        display: none;
+      }
+
+      .site-nav__list {
+        display: flex;
+      }
+
+      .site-nav__cta {
+        display: inline-flex;
       }
     }
 
@@ -431,7 +457,7 @@
       padding-top: var(--space-s);
     }
 
-    /* ========== Sections ========== */
+    /* ========== Sections allgemein ========== */
 
     .section {
       padding: var(--space-xl) 0;
@@ -746,24 +772,28 @@
   <div class="page">
     <!-- Header -->
     <header class="site-header">
-      <div class="container site-header__inner">
-        <!-- großer Logo-Pill -->
-        <a href="#start" class="site-brand" aria-label="Familiencamp Heideglück – familienfreundlicher Campingplatz">
-          <!-- Dateiname bei Bedarf anpassen -->
-          <img
-            src="familiencamp-logo.png"
-            alt="Familiencamp Heideglück – familienfreundlicher Campingplatz"
-            class="site-brand__img"
-          />
-        </a>
+      <div class="container">
+        <div class="site-header__inner">
+          <!-- Logo-Banner über volle Breite -->
+          <a href="#start" class="site-brand" aria-label="Familiencamp Heideglück – familienfreundlicher Campingplatz">
+            <img
+              src="familiencamp-logo.png"
+              alt="Familiencamp Heideglück – familienfreundlicher Campingplatz"
+              class="site-brand__img"
+            />
+          </a>
 
-        <nav class="site-nav" id="site-nav">
+          <!-- Burger-Button -->
           <button
             class="site-nav__toggle"
             type="button"
             aria-label="Navigation umschalten"
             onclick="toggleNav()"
           ></button>
+        </div>
+
+        <!-- Navigation unter dem Banner -->
+        <nav class="site-nav" id="site-nav">
           <ul class="site-nav__list">
             <li><a href="#stellplaetze" class="site-nav__link">Stellplätze &amp; Lodges</a></li>
             <li><a href="#erlebnisse" class="site-nav__link">Erlebnisse</a></li>
