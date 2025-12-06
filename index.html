@@ -101,39 +101,40 @@
       border: 0;
     }
 
-    /* ========== Header & Banner ========== */
+    /* ========== Header & full-width Banner ========== */
 
     .site-header {
       position: sticky;
       top: 0;
       z-index: 100;
-      padding-top: max(1rem, env(safe-area-inset-top));
-      padding-bottom: 0.75rem;
+      padding-top: max(0.4rem, env(safe-area-inset-top));
+      padding-bottom: 0.6rem;
       background: rgba(243, 246, 242, 0.96);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(214, 224, 211, 0.7);
     }
 
-    /* Header-Container über komplette Breite */
-    .site-header .container {
-      max-width: 100%;
-      padding-inline: var(--space-m);
-    }
-
+    /* Header nimmt volle Breite, kein innerer Rand */
     .site-header__inner {
       position: relative;
+      width: 100%;
     }
 
-    /* Logo-Banner über die gesamte Header-Fläche (abzüglich kleinem Seitenabstand) */
+    /* Logo-Banner über komplette Bildschirmbreite */
+    .site-brand-wrapper {
+      width: 100%;
+      overflow: hidden;
+    }
+
     .site-brand {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
-      padding: 0.6rem 1.2rem;
-      border-radius: 999px;
+      padding: 0.8rem 1.4rem;
       background: var(--color-surface);
       box-shadow: 0 10px 30px rgba(8, 32, 18, 0.15);
+      border-radius: 0; /* wirklich vollflächiges Banner */
     }
 
     .site-brand__img {
@@ -149,10 +150,10 @@
       }
     }
 
-    /* Burger, der rechts über dem Banner schwebt */
+    /* Burger-Button liegt rechts oben über dem Banner */
     .site-nav__toggle {
       position: absolute;
-      right: var(--space-m);
+      right: 0.9rem;
       top: 50%;
       transform: translateY(-50%);
       border: none;
@@ -187,6 +188,7 @@
       justify-content: center;
       gap: var(--space-l);
       position: relative;
+      padding-inline: var(--space-m);
     }
 
     .site-nav__list {
@@ -258,14 +260,27 @@
       }
     }
 
-    /* Desktop: Menü dauerhaft sichtbar, Burger ausgeblendet */
+    /* Desktop: Menü dauerhaft sichtbar, Burger ausblenden und Content zentrieren */
 
     @media (min-width: 769px) {
+      .site-header__inner {
+        max-width: var(--content-width);
+        margin: 0 auto;
+      }
+
+      .site-brand-wrapper {
+        border-radius: 24px;
+        overflow: visible;
+      }
+
+      .site-brand {
+        border-radius: 24px;
+      }
+
       .site-nav {
         justify-content: space-between;
         max-width: var(--content-width);
         margin-inline: auto;
-        padding-inline: var(--space-m);
       }
 
       .site-nav__toggle {
@@ -278,20 +293,6 @@
 
       .site-nav__cta {
         display: inline-flex;
-      }
-
-      .site-header__inner {
-        max-width: var(--content-width);
-        margin: 0 auto;
-        padding-inline: var(--space-m);
-      }
-
-      .site-header .container {
-        padding-inline: 0;
-      }
-
-      .site-brand {
-        border-radius: 24px;
       }
     }
 
@@ -790,8 +791,8 @@
   <div class="page">
     <!-- Header -->
     <header class="site-header">
-      <div class="container">
-        <div class="site-header__inner">
+      <div class="site-header__inner">
+        <div class="site-brand-wrapper">
           <!-- Logo-Banner über die gesamte Breite -->
           <a href="#start" class="site-brand" aria-label="Familiencamp Heideglück – familienfreundlicher Campingplatz">
             <img
@@ -800,33 +801,33 @@
               class="site-brand__img"
             />
           </a>
-
-          <!-- Burger-Button -->
-          <button
-            class="site-nav__toggle"
-            type="button"
-            aria-label="Navigation umschalten"
-            onclick="toggleNav()"
-          ></button>
         </div>
 
-        <!-- Navigation unter dem Banner -->
-        <nav class="site-nav" id="site-nav">
-          <ul class="site-nav__list">
-            <li><a href="#stellplaetze" class="site-nav__link">Stellplätze &amp; Lodges</a></li>
-            <li><a href="#erlebnisse" class="site-nav__link">Erlebnisse</a></li>
-            <li><a href="#infos" class="site-nav__link">Infos &amp; FAQ</a></li>
-            <li><a href="#kontakt" class="site-nav__link">Kontakt</a></li>
-          </ul>
-          <button
-            class="site-nav__cta"
-            type="button"
-            onclick="document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' })"
-          >
-            Aufenthalt anfragen
-          </button>
-        </nav>
+        <!-- Burger-Button -->
+        <button
+          class="site-nav__toggle"
+          type="button"
+          aria-label="Navigation umschalten"
+          onclick="toggleNav()"
+        ></button>
       </div>
+
+      <!-- Navigation unter dem Banner -->
+      <nav class="site-nav" id="site-nav">
+        <ul class="site-nav__list">
+          <li><a href="#stellplaetze" class="site-nav__link">Stellplätze &amp; Lodges</a></li>
+          <li><a href="#erlebnisse" class="site-nav__link">Erlebnisse</a></li>
+          <li><a href="#infos" class="site-nav__link">Infos &amp; FAQ</a></li>
+          <li><a href="#kontakt" class="site-nav__link">Kontakt</a></li>
+        </ul>
+        <button
+          class="site-nav__cta"
+          type="button"
+          onclick="document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' })"
+        >
+          Aufenthalt anfragen
+        </button>
+      </nav>
     </header>
 
     <main>
