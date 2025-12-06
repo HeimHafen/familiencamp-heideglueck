@@ -101,7 +101,7 @@
       border: 0;
     }
 
-    /* ========== Header im Azur-Stil ========== */
+    /* ========== Header im „Azur“-Stil (Burger + Logo in einer Reihe) ========== */
 
     .site-header {
       position: sticky;
@@ -109,23 +109,19 @@
       z-index: 100;
       background: #ffffff;
       border-bottom: 1px solid rgba(214, 224, 211, 0.7);
-      padding-top: max(0.4rem, env(safe-area-inset-top));
+      padding-top: max(0.2rem, env(safe-area-inset-top));
     }
 
     .site-header__bar {
       max-width: var(--content-width);
       margin: 0 auto;
-      padding: 0.4rem var(--space-m);
+      padding: 0.35rem var(--space-m);
       display: flex;
       align-items: center;
-      justify-content: center;
-      position: relative;
+      gap: var(--space-m);
     }
 
-    /* Burger-Button links wie bei vielen Camping-Seiten */
     .site-nav__toggle {
-      position: absolute;
-      left: var(--space-m);
       border: none;
       padding: 0;
       background: transparent;
@@ -149,13 +145,11 @@
       color: var(--color-text-soft);
     }
 
-    /* Logo mittig, nutzt so viel Fläche wie möglich */
     .site-brand {
       display: flex;
       align-items: center;
-      justify-content: center;
-      width: 100%;
-      text-align: center;
+      flex: 1;
+      justify-content: flex-start;
     }
 
     .site-brand__img {
@@ -166,19 +160,20 @@
 
     @media (min-width: 480px) {
       .site-brand__img {
-        max-height: 52px;
+        max-height: 54px;
       }
     }
 
-    /* Navigation unter dem Logo-Balken (wie im Beispiel) */
+    /* Navigation direkt unter dem Header-Balken */
 
     .site-nav {
-      margin-top: 0.2rem;
-      padding: 0.3rem var(--space-m) 0.4rem;
+      margin-top: 0.1rem;
+      padding: 0.25rem var(--space-m) 0.4rem;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: var(--space-l);
+      position: relative;
     }
 
     .site-nav__list {
@@ -249,24 +244,12 @@
       .site-nav--open .site-nav__cta {
         margin: var(--space-s) var(--space-m);
       }
-
-      .site-nav {
-        position: relative;
-      }
     }
 
-    /* Desktop: Nav dauerhaft sichtbar, Burger ausblenden */
+    /* Desktop: Nav dauerhaft sichtbar */
 
     @media (min-width: 769px) {
       .site-header__bar {
-        justify-content: flex-start;
-      }
-
-      .site-nav__toggle {
-        display: none;
-      }
-
-      .site-brand {
         justify-content: flex-start;
       }
 
@@ -275,6 +258,10 @@
         margin: 0 auto;
         justify-content: flex-start;
         gap: var(--space-l);
+      }
+
+      .site-nav__toggle {
+        display: none;
       }
 
       .site-nav__list {
@@ -348,7 +335,7 @@
     /* ========== Hero ========== */
 
     .hero {
-      padding: var(--space-xxl) 0 var(--space-xl);
+      padding: var(--space-xl) 0 var(--space-xl);
     }
 
     .hero__grid {
